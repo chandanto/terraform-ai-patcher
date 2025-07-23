@@ -20,6 +20,6 @@ based on the latest Terraform CLI and AWS provider releases.
 ---
 
 ## Disclaimer
-
 This is a prototype for demonstration purposes only.
+
 <img src="Compare_Terraform_Patching_TraditionalLifecycle_and_AIEnhanced.png" alt="Logo" width="370"/>

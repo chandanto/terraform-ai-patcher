@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import re
 
 def get_latest_terraform_version():
     url = "https://releases.hashicorp.com/terraform/index.json"

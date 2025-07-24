@@ -7,8 +7,19 @@ def get_latest_terraform_version():
     response = requests.get(url)
     data = response.json()
     versions = list(data["versions"].keys())
-    versions = [v for v in versions if "rc" not in v and "beta" not in v]
-    latest_version = sorted(versions, key=lambda s: list(map(int, s.split('.'))))[-1]
+    
+    # Keep only proper semantic versions like "1.2.3"
+    semver_versions = [
+        v for v in versions
+        if re.fullmatch(r"\d+\.\d+\.\d+", v)
+    ]
+    
+    # Sort based on integer version parts
+    latest_version = sorted(
+        semver_versions,
+        key=lambda s: list(map(int, s.split('.')))
+    )[-1]
+    
     return latest_version
 
 def get_latest_aws_provider_version():

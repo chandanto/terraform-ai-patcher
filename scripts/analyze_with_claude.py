@@ -4,7 +4,7 @@ import os
 import boto3
 
 # AWS Bedrock client setup
-bedrock = boto3.client('bedrock-runtime')
+bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
 
 def run_terraform_plan():
     """Run terraform plan and capture output."""

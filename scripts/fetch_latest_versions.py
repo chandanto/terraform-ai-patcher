@@ -7,19 +7,18 @@ def get_latest_terraform_version():
     response = requests.get(url)
     data = response.json()
     versions = list(data["versions"].keys())
-    
-    # Keep only proper semantic versions like "1.2.3"
+
+    # Filter only valid semantic versions: "X.Y.Z" where X, Y, Z are integers
     semver_versions = [
         v for v in versions
         if re.fullmatch(r"\d+\.\d+\.\d+", v)
     ]
-    
-    # Sort based on integer version parts
+    # Sort semver versions
     latest_version = sorted(
         semver_versions,
         key=lambda s: list(map(int, s.split('.')))
     )[-1]
-    
+
     return latest_version
 
 def get_latest_aws_provider_version():
